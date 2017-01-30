@@ -110,7 +110,7 @@ $('#data')
                             document.getElementById('rarm').style.display = '';
                         } else if (total == 5) {
                             //show L leg
-                           // document.getElementById('larm').style.display = '';
+                           // document.getElementById('lleg').style.display = '';
                         } else if (total == 6) {
                             //show R leg
                             document.getElementById('legs').style.display = '';
