@@ -1,3 +1,9 @@
+document.getElementById('hmhead').style.display = 'none';
+document.getElementById('larm').style.display = 'none';
+document.getElementById('tor').style.display = 'none';
+document.getElementById('rarm').style.display = 'none';
+document.getElementById('legs').style.display = 'none';
+
 // class Hangman {
 //     word: string;
 //     // answer: string;
@@ -52,10 +58,11 @@ $('#data')
                 for (let i = 0; i < answer.length; i++) {
                     holder[i] = " _ ";
                 }
+                holder.join('');
 
                 while (total < 6) {
                     let correct = false;
-                     let guess = window.prompt(`Enter a letter: \n
+                    let guess = prompt(`Enter a letter: \n
                      ${holder}\n attempts: ${total} out of 6`);
                     // let guess = (<HTMLInputElement>document.getElementById('ansGiven')).value;
 
@@ -77,23 +84,45 @@ $('#data')
 
                         answer = answer.toLowerCase();
                         if (guess == answer) {
-                           // console.log(guess, index);
+                            // console.log(guess, index);
                             holder[index] = guess;
                             correct = true;
                         }
 
                     });// ends answer.fforeach
-               
+
                     if (correct == false) {
                         console.log(total);
                         total++;
-                    }
+                        if (total == 1) {
+                            //show head of hangman
+                            document.getElementById('hmhead').style.display = '';
+
+
+                        } else if (total == 2) {
+                            //show L arm
+                            document.getElementById('larm').style.display = '';
+                        } else if (total == 3) {
+                            //show body
+                            document.getElementById('tor').style.display = '';
+                        } else if (total == 4) {
+                            //show R arm
+                            document.getElementById('rarm').style.display = '';
+                        } else if (total == 5) {
+                            //show L leg
+                           // document.getElementById('larm').style.display = '';
+                        } else if (total == 6) {
+                            //show R leg
+                            document.getElementById('legs').style.display = '';
+                        }
+
+                    }//end nested if's
                     let holdertest = holder.join('');
                     console.log(holdertest);
                     console.log(answer);
                     //check to see if the game is over
                     if (holdertest == anstest) {
-                       // console.log('you win!');
+                        // console.log('you win!');
                         break;
                     }
 
@@ -115,7 +144,7 @@ $('#data')
                 // Clear html content
                 $elm.html('');
 
-            //prints out all the words in words.json
+                //prints out all the words in words.json
                 words.forEach(function (word) {
                     $elm.append(`<li>${word}</li>`);
                 });

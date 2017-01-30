@@ -1,3 +1,8 @@
+document.getElementById('hmhead').style.display = 'none';
+document.getElementById('larm').style.display = 'none';
+document.getElementById('tor').style.display = 'none';
+document.getElementById('rarm').style.display = 'none';
+document.getElementById('legs').style.display = 'none';
 // class Hangman {
 //     word: string;
 //     // answer: string;
@@ -42,9 +47,10 @@ $('#data')
         for (var i = 0; i < answer.length; i++) {
             holder[i] = " _ ";
         }
+        holder.join('');
         var _loop_1 = function () {
             var correct = false;
-            var guess = window.prompt("Enter a letter: \n\n                     " + holder + "\n attempts: " + total + " out of 6");
+            var guess = prompt("Enter a letter: \n\n                     " + holder + "\n attempts: " + total + " out of 6");
             // let guess = (<HTMLInputElement>document.getElementById('ansGiven')).value;
             // document.getElementById('atempt').addEventListener('click', function(event) {
             //     event.preventDefault();
@@ -65,7 +71,29 @@ $('#data')
             if (correct == false) {
                 console.log(total);
                 total++;
-            }
+                if (total == 1) {
+                    //show head of hangman
+                    document.getElementById('hmhead').style.display = '';
+                }
+                else if (total == 2) {
+                    //show L arm
+                    document.getElementById('larm').style.display = '';
+                }
+                else if (total == 3) {
+                    //show body
+                    document.getElementById('tor').style.display = '';
+                }
+                else if (total == 4) {
+                    //show R arm
+                    document.getElementById('rarm').style.display = '';
+                }
+                else if (total == 5) {
+                }
+                else if (total == 6) {
+                    //show R leg
+                    document.getElementById('legs').style.display = '';
+                }
+            } //end nested if's
             var holdertest = holder.join('');
             console.log(holdertest);
             console.log(answer);
